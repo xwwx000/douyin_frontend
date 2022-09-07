@@ -1,0 +1,59 @@
+.ant-table-wrapper {
+    width: 98%;
+    height: 100%;
+    position: relative;
+    top: 30px;
+}
+
+.ant-table {
+    background-color: rgb(9, 100, 100);
+    color: white;
+}
+/*表头款式*/
+.ant-table-thead>tr>th {
+    background-color: rgb(3, 50, 50);
+    color: white;
+}
+
+/*批改选中行款式*/
+.ant-table-tbody {
+    >tr:hover:not(.ant-table-expanded-row)>td,
+    .ant-table-row-hover,
+    .ant-table-row-hover>td {
+        background-color: rgb(18, 75, 75) !important;
+    }
+}
+
+
+
+/* 去除表头最左边边框 */
+.ant-table-container table>thead>tr:first-child th:last-child {
+    border-right: none;
+}
+
+/* 去除tbody最左边边框 */
+.ant-table-container table>tbody>tr td:last-child {
+    border-right: none;
+}
+
+/* 暂无数据款式 */
+.ant-empty-description {
+    color: white;
+}
+/* 去除边框，留左边框 && 表格内容居中 && 行高 */
+.ant-table-tbody>tr>td,
+.ant-table-thead>tr>th {
+    border-bottom: none;
+    border-right: 1px solid #ccc;
+    text-align: center !important;
+    padding: 10px 10px !important;
+}
+/* 奇数行 */
+.table-color-odd {
+    background-color: rgb(210, 218, 218);
+}
+
+/* 偶数行 */
+.table-color-even {
+    background-color: rgb(175, 240, 240);
+}

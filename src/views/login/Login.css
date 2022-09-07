@@ -1,0 +1,27 @@
+.login{
+    /*background: rgb(35,39,65);*/
+     height: 100% ;
+     width: 100%;
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-image: url("./loginbg.png")
+}
+.formContainer{
+    position: fixed;
+    background-color: rgba(0,0,0,0.7);
+    width: 550px;
+    height: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
+    color: white;
+    z-index: 100;
+}
+.logintitle{
+    text-align: center;
+    height: 80px;
+    line-height: 80px;
+    font-size: 30px;
+    color: white;
+}

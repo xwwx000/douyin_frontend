@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <script>
+        let socket;
+        function openSocket(){
+            const socketUrl = "ws://localhost:9090/device/system/allmonitor";
+            if(socket!=null){
+                socket.close();
+                socket = null;
+            }
+            socket = new WebSocket(socketUrl);
+            socket.onopen = function(){
+                console.log("websocket已打开");
+            }
+            socket.onmessage = function(msg){
+                console.log(msg.data);
+            }
+            socket.onclose = function(){
+                console.log("websocket已关闭");
+            }
+            socket.onerror = function(){
+                console.log("webosocket发生错误");
+            }
+        }
+        openSocket();
+    </script>
+</html>

@@ -1,0 +1,8 @@
+#scroll-board {
+    width: 50%;
+    box-sizing: border-box;
+    margin-left: 20px;
+    height: 100%;
+    overflow: hidden;
+  }
+  
