@@ -11,6 +11,8 @@ import {
   InsertRowBelowOutlined,
   ProjectOutlined,
   SettingOutlined,
+  BarcodeOutlined,
+  BarsOutlined
 } from '@ant-design/icons';
 import MenuItem from 'antd/lib/menu/MenuItem';
 const { Sider } = Layout;
@@ -20,7 +22,7 @@ function SideMenu(props) {
 
   const [menu, setMenu] = useState([])
   useEffect(() => {
-    axios.get("/device/system/user/menu", { "headers": { "token":StorageUtil.localStorageGet("token").token } })
+    axios.get("/douyin/system/user/menu", { "headers": { "token":StorageUtil.localStorageGet("token").token } })
       .then(res => {
         if(res.data.data == undefined){
           setMenu([])
@@ -46,10 +48,11 @@ function SideMenu(props) {
   }
   const iconList = {
     "home": <HomeOutlined />,
-    "Enterprises" : <UserOutlined />,
-    "BasicData":<SettingOutlined />,
-    "Bussiness":<InsertRowBelowOutlined />,
-    "Report":<ProjectOutlined />
+    "enterprises" : <UserOutlined />,
+    "bussiness":<InsertRowBelowOutlined />,
+    "platform":<ProjectOutlined />,
+    "goods":<BarcodeOutlined />,
+    "data-report":<BarsOutlined />
   }
   const selectKeys = props.location.pathname
   const openKeys = ["/" + selectKeys.split("/")[1]]
@@ -57,7 +60,7 @@ function SideMenu(props) {
   return (
     <Sider trigger={null} collapsible collapsed={props.isCollapsed}>
       <div style={{ display: "flex", height: "100%", "flexDirection": "column" }}>
-        <div className="ant-pro-sider-logo"><img src={require('../../image/logo.png')} style={{height:40}}/>{props.isCollapsed===false?<h1>中国烟草</h1>:""}</div>
+        <div className="ant-pro-sider-logo"><img src={require('../../image/logo.png')} style={{height:40}}/>{props.isCollapsed===false?<h1>天机智投</h1>:""}</div>
         <div style={{ flex: 1, "overflow": "auto" }}>
           <Menu theme="dark" mode="inline" selectedKeys={selectKeys} defaultOpenKeys={openKeys}>
             {renderMenu(menu)}

@@ -15,7 +15,7 @@ export default function RightList(props) {
         getModuleList()
     }, [])
     const getModuleList = () => {
-        axios.get("/device/system/user/getModuleFunctionTree", { "headers": { "token": StorageUtil.localStorageGet("token").token } })
+        axios.get("/douyin/system/user/getModuleFunctionTree", { "headers": { "token": StorageUtil.localStorageGet("token").token } })
         .then(res => {
             const list = res.data.data
             //防止后台传过来空children[]
@@ -78,7 +78,7 @@ export default function RightList(props) {
     }
     const deleteMethod = (item) => {
         // console.log(item)
-        axios.post("/device/system/user/deleteModule", { id: item.id },
+        axios.post("/douyin/system/user/deleteModule", { id: item.id },
             {
                 headers: {
                     "Content-Type": "application/json;",
@@ -94,7 +94,7 @@ export default function RightList(props) {
             })
     }
     const switchMethod = (item) => {
-        axios.put("/device/system/user/isShowModule", { id: item.id, isshow: item.isshow ? 0 : 1 },
+        axios.put("/douyin/system/user/isShowModule", { id: item.id, isshow: item.isshow ? 0 : 1 },
             {
                 headers: {
                     "Content-Type": "application/json;",

@@ -28,7 +28,7 @@ export default function Department(props) {
   });
   useEffect(() => {
     let params = { "pageNo": page.current, "pageSize": page.pageSize }
-    axios.get("/device/system/dept/getDeptList",
+    axios.get("/douyin/system/dept/getDeptList",
       {
         "params": params,
         "headers": { "token": StorageUtil.localStorageGet("token").token }
@@ -102,7 +102,7 @@ export default function Department(props) {
     });
   }
   const deleteMethod = (item) => {
-    axios.delete("/device/system/dept/deleteDept",
+    axios.delete("/douyin/system/dept/deleteDept",
       {
         //后端作为对象来封装
         data: {
@@ -145,7 +145,7 @@ export default function Department(props) {
   const saveAddDept = () => {
     addForm.current.validateFields().then(values => {
       setIsAddVisible(false)
-      axios.post("/device/system/dept/addDept",
+      axios.post("/douyin/system/dept/addDept",
         { deptName: values.deptName, manager: values.manager, telphone: values.telphone, sort: values.sort, pid: pid },
         {
           headers: {
@@ -192,7 +192,7 @@ export default function Department(props) {
   const saveUpdateDept = () => {
     updateForm.current.validateFields().then(values => {
       setIsUpdateVisible(false)
-      axios.post("/device/system/dept/updateDept",
+      axios.post("/douyin/system/dept/updateDept",
         { id: values.id, deptName: values.deptName, manager: values.manager, telphone: values.telphone, sort: values.sort },
         {
           headers: {

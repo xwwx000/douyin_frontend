@@ -4,7 +4,6 @@ import TopHeader from '../../components/sandbox/TopHeader'
 import { Layout } from 'antd';
 import './NewsSandBox.css'
 import ContentRoute from '../../components/sandbox/ContentRoute'
-import Foot from '../foot/Foot';
 const { Content,Footer } = Layout;
 export default function NewsSandBox() {
   return (
@@ -23,7 +22,7 @@ export default function NewsSandBox() {
         >
           <ContentRoute/>
         </Content>
-        <Footer style={{ textAlign: 'center',padding:"10px" }}>Ant Design ©2022 Created by Ant UED</Footer>
+        <Footer style={{ textAlign: 'center',padding:"10px" }}>©2022 Created by 天机智投</Footer>
       </Layout>
     </Layout>
   )

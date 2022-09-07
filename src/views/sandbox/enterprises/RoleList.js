@@ -38,7 +38,7 @@ export default function RoleList(props) {
     const fun = ["/Enterprises/role/add","/Enterprises/role/delete","/Enterprises/role/update","/Enterprises/role/right"]
     useEffect(() => {
         let params = { "pageNo": page.current, "pageSize": page.pageSize}
-        axios.get("/device/system/role/getRoleList",
+        axios.get("/douyin/system/role/getRoleList",
             {
                 "params": params,
                 "headers": { "token": StorageUtil.localStorageGet("token").token }
@@ -59,7 +59,7 @@ export default function RoleList(props) {
     let rlist = []
     //获取权限树
     const rightTreeData = (roleId) => {
-        axios.get("/device/system/role/getModuleByRoleId",
+        axios.get("/douyin/system/role/getModuleByRoleId",
             {
                 "params": { roleId: roleId },
                 "headers": { "token": StorageUtil.localStorageGet("token").token }
@@ -112,9 +112,9 @@ export default function RoleList(props) {
             title: '操作',
             render: (item) => {
                 return <div>
-                    <Button type="danger" title='删除' disabled={rolefunction.indexOf(fun[1])<0 || item.isAdmin === 1 ? true : false} shape="circle" icon={<DeleteOutlined />} onClick={() => confirmMethod(item)} />&nbsp;&nbsp;
-                    <Button type="primary" title='编辑' disabled={rolefunction.indexOf(fun[2])<0 || item.isAdmin === 1 ? true : false} shape="circle" icon={<EditOutlined />} onClick={() => editMethod(item)} />&nbsp;&nbsp;
-                    <Button type="primary" title='角色权限' disabled={rolefunction.indexOf(fun[3])<0 || item.isAdmin === 1 ? true : false} shape="circle" icon={<ExclamationCircleOutlined />} onClick={() => rightMethod(item)} />
+                    <Button type="danger" title='删除'  shape="circle" icon={<DeleteOutlined />} onClick={() => confirmMethod(item)} />&nbsp;&nbsp;
+                    <Button type="primary" title='编辑'  shape="circle" icon={<EditOutlined />} onClick={() => editMethod(item)} />&nbsp;&nbsp;
+                    <Button type="primary" title='角色权限'  shape="circle" icon={<ExclamationCircleOutlined />} onClick={() => rightMethod(item)} />
                 </div>
             }
         }
@@ -157,7 +157,7 @@ export default function RoleList(props) {
         setIsModalVisible(false)
 
         console.log(rightOk)
-        axios.put("/device/system/role/updateRoleModule",
+        axios.put("/douyin/system/role/updateRoleModule",
             { roleId: roleid, modules: rightOk }, {
             headers: {
                 token: StorageUtil.localStorageGet("token").token
@@ -173,7 +173,7 @@ export default function RoleList(props) {
         setIsModalVisible(false)
     }
     const deleteMethod = (item) => {
-        axios.delete("/device/system/role/deleteRole",
+        axios.delete("/douyin/system/role/deleteRole",
             {
                 //后端作为对象来封装
                 // data: {
@@ -259,7 +259,7 @@ export default function RoleList(props) {
     const saveAddRole=()=>{
         addForm.current.validateFields().then(values => {
             setIsAddVisible(false)
-            axios.post("/device/system/role/addRole",
+            axios.post("/douyin/system/role/addRole",
               { roleName: values.roleName,sort:values.sort},
               {
                 headers: {
@@ -299,7 +299,7 @@ export default function RoleList(props) {
     const saveUpdateRole=()=>{
         updateForm.current.validateFields().then(values => {
           setIsUpdateVisible(false)
-          axios.put("/device/system/role/updateRole",
+          axios.put("/douyin/system/role/updateRole",
             { id:curData.id,roleName: values.roleName,sort:values.sort},
             {
               headers: {

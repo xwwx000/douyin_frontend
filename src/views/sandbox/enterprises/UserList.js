@@ -38,7 +38,7 @@ export default function UserList(props) {
    * 获取角色列表
    ****************************************************************/
   useEffect(() => {
-    axios.get("/device/system/role/getRoleList",
+    axios.get("/douyin/system/role/getRoleList",
       {
         "params": { pageNo: 1, pageSize: 1000 },
         "headers": { "token":StorageUtil.localStorageGet("token").token }
@@ -54,7 +54,7 @@ export default function UserList(props) {
    * 获取部门列表
    ****************************************************************/
   useEffect(() => {
-    axios.get("/device/system/dept/deptListWithTree",
+    axios.get("/douyin/system/dept/deptListWithTree",
       {
         "headers": { "token":StorageUtil.localStorageGet("token").token }
       })
@@ -138,7 +138,7 @@ export default function UserList(props) {
       params = { ...params, ascDesc: ascDesc }
     }
 
-    axios.get("/device/system/user/getUserList",
+    axios.get("/douyin/system/user/getUserList",
       {
         "params": params,
         "headers": { "token": StorageUtil.localStorageGet("token").token }
@@ -195,7 +195,7 @@ export default function UserList(props) {
    * 更新用户状态
    **************************************/
   const switchMethod = (item) => {
-    axios.put("/device/system/user/setStatus", { id: item.id, status: item.status ? 0 : 1 },
+    axios.put("/douyin/system/user/setStatus", { id: item.id, status: item.status ? 0 : 1 },
       {
         headers: {
           "Content-Type": "application/json;",
@@ -237,7 +237,7 @@ export default function UserList(props) {
       // setDataSource([...dataSource,{
 
       // }])
-      axios.post("/device/system/user/addUser",
+      axios.post("/douyin/system/user/addUser",
         { userCode: values.userCode, userName: values.userName, deptId: values.deptId, userType: values.userType,allowsRoles:values.allowsRoles },
         {
           headers: {
@@ -273,7 +273,7 @@ export default function UserList(props) {
    * 删除用户
    **************************************/
     const deleteMethod = (item) => {
-      axios.delete("/device/system/user/deleteUser",
+      axios.delete("/douyin/system/user/deleteUser",
         {
           //后端作为对象来封装
           data: {
@@ -311,7 +311,7 @@ export default function UserList(props) {
       // setDataSource([...dataSource,{
 
       // }])
-      axios.put("/device/system/user/updateUser",
+      axios.put("/douyin/system/user/updateUser",
         { id:curUpdateUserData.id,userCode: values.userCode, userName: values.userName, deptId: values.deptId, userType: values.userType,allowsRoles:values.allowsRoles },
         {
           headers: {

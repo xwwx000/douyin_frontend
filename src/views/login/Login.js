@@ -9,7 +9,7 @@ export default function Login(props) {
   const [checked,setChecked] =  useState(localStorage.getItem("remember")?true:false)
   //登录
   const onFinish = (values) => {
-    axios.post("/device/auth/token/system_login",
+    axios.post("/douyin/auth/token/system_login",
       { username: values.username, password: values.password }, {}).then(res => {
         if (res.data.length === 0 || res.data.code === -1) {
           message.warning({
@@ -22,7 +22,7 @@ export default function Login(props) {
         }
         //localStorage.setItem("token", JSON.stringify(res.data.data))
         StorageUtil.localStorageSet("token", res.data.data,StorageUtil.expireTime)
-        localStorage.setItem("device_username",values.username)
+        localStorage.setItem("douyin_username",values.username)
         props.history.replace("/")
       }).catch(err => {
         console.log(err)
@@ -42,14 +42,14 @@ export default function Login(props) {
   const initUsername = ()=>{
     var username = ""
     if(localStorage.getItem("remember")){
-      username = localStorage.getItem("device_username")
+      username = localStorage.getItem("douyin_username")
     }
     return username
   }
   return (
     <div className="login">
       <div className='formContainer'>
-        <div className='logintitle'>后台管理系统</div>
+        <div className='logintitle'>天机智投</div>
         <Form
           name="normal_login"
           className="login-form"

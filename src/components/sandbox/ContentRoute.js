@@ -7,25 +7,23 @@ import RightList from '../../views/sandbox/enterprises/RightList'
 import RoleList from '../../views/sandbox/enterprises/RoleList'
 import UserList from '../../views/sandbox/enterprises/UserList'
 import DepartmentList from '../../views/sandbox/enterprises/DepartmentList'
-import DeviceList from '../../views/sandbox/enterprises/DeviceList'
 import NoPermission from '../../views/sandbox/nopermission/NoPermission'
 import StorageUtil from '../../util/StorageUtil'
 import axios from 'axios'
 
 const LocalRouterMap = {
     "/home": Home,
-    "/Enterprises/user": UserList,
-    "/Enterprises/role": RoleList,
-    "/Enterprises/right": RightList,
-    "/Enterprises/department": DepartmentList,
-    "/Bussiness/device": DeviceList    
+    "/enterprises/user": UserList,
+    "/enterprises/role": RoleList,
+    "/enterprises/right": RightList,
+    "/enterprises/department": DepartmentList
 }
 function ContentRoute(props) {
 
     const [UserRouteList, setUserRouteList] = useState([])
     console.log( StorageUtil.localStorageGet("token").token)
     useEffect(() => {
-        axios.get("/device/system/user/getModulesByUser"
+        axios.get("/douyin/system/user/getModulesByUser"
             , { "headers": { "token": StorageUtil.localStorageGet("token").token } })
             .then(res => {
                 setUserRouteList(res.data.data)
@@ -41,10 +39,6 @@ function ContentRoute(props) {
     return (
         <Spin size="large" tip="Loading..." spinning={props.isLoading}>
         <Switch>
-            {/* <Route path="/home" component={Home} />
-            <Route path="/Enterprises/user" component={UserList} />
-            <Route path="/Enterprises/role" component={RoleList} />
-            <Route path="/Enterprises/right" component={RightList} /> */}
             {
                 UserRouteList.map(item => 
                     {
