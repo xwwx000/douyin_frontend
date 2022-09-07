@@ -35,7 +35,6 @@ export default function RoleList(props) {
         pageSize: 8 // 每页数据条数
     });
     const [rolefunction,setRoleFunction] = useState([])
-    const fun = ["/Enterprises/role/add","/Enterprises/role/delete","/Enterprises/role/update","/Enterprises/role/right"]
     useEffect(() => {
         let params = { "pageNo": page.current, "pageSize": page.pageSize}
         axios.get("/douyin/system/role/getRoleList",
@@ -339,7 +338,7 @@ export default function RoleList(props) {
                 <Breadcrumb.Item>企业信息管理</Breadcrumb.Item>
                 <Breadcrumb.Item>角色管理</Breadcrumb.Item>
             </Breadcrumb>
-            <Button type="primary" style={{ "margin": 10, "marginLeft": 0 }} onClick={showAddForm} disabled={rolefunction.indexOf(fun[0])<0}><PlusOutlined />新增角色</Button>
+            <Button type="primary" style={{ "margin": 10, "marginLeft": 0 }} onClick={showAddForm} ><PlusOutlined />新增角色</Button>
             <Table dataSource={dataSource} columns={columns} rowKey={columns => columns.id}
                 pagination={{
                     position: ['bottomRight'],
